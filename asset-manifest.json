@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/KishoreShyam/E_Commerce_Website.git/static/css/main.f5cd6495.css",
-    "main.js": "/KishoreShyam/E_Commerce_Website.git/static/js/main.3c0c2c98.js",
-    "static/js/453.8c770131.chunk.js": "/KishoreShyam/E_Commerce_Website.git/static/js/453.8c770131.chunk.js",
-    "index.html": "/KishoreShyam/E_Commerce_Website.git/index.html",
-    "main.f5cd6495.css.map": "/KishoreShyam/E_Commerce_Website.git/static/css/main.f5cd6495.css.map",
-    "main.3c0c2c98.js.map": "/KishoreShyam/E_Commerce_Website.git/static/js/main.3c0c2c98.js.map",
-    "453.8c770131.chunk.js.map": "/KishoreShyam/E_Commerce_Website.git/static/js/453.8c770131.chunk.js.map"
+    "main.css": "/E_Commerce_Website/static/css/main.f5cd6495.css",
+    "main.js": "/E_Commerce_Website/static/js/main.d973db28.js",
+    "static/js/453.8c770131.chunk.js": "/E_Commerce_Website/static/js/453.8c770131.chunk.js",
+    "index.html": "/E_Commerce_Website/index.html",
+    "main.f5cd6495.css.map": "/E_Commerce_Website/static/css/main.f5cd6495.css.map",
+    "main.d973db28.js.map": "/E_Commerce_Website/static/js/main.d973db28.js.map",
+    "453.8c770131.chunk.js.map": "/E_Commerce_Website/static/js/453.8c770131.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f5cd6495.css",
-    "static/js/main.3c0c2c98.js"
+    "static/js/main.d973db28.js"
   ]
 }
