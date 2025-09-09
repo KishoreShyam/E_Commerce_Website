@@ -23,13 +23,13 @@ const Checkout = ({ cartItems, user, onLogin }) => {
 
   const [errors, setErrors] = useState({});
 
-  // Show relevant fields based on payment method
+  
   const showCardDetails = formData.paymentMethod === 'card';
   const showUPIDetails = formData.paymentMethod === 'upi';
   const showNetBankingDetails = formData.paymentMethod === 'netbanking';
 
   useEffect(() => {
-    // Clear payment-specific errors when payment method changes
+    
     const paymentFields = ['cardNumber', 'cardName', 'cardExpiry', 'cardCvv', 'upiId', 'bankName'];
     setErrors(prev => {
       const newErrors = { ...prev };
@@ -73,8 +73,8 @@ const Checkout = ({ cartItems, user, onLogin }) => {
 
   const validateForm = () => {
     const newErrors = {};
+
     
-    // Personal information validation
     if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
     if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
     if (!formData.email.trim()) newErrors.email = 'Email is required';
@@ -92,7 +92,7 @@ const Checkout = ({ cartItems, user, onLogin }) => {
       newErrors.phone = 'Phone number must be 10 digits';
     }
 
-    // Payment method specific validation
+    
     if (formData.paymentMethod === 'card') {
       if (!formData.cardNumber.trim()) newErrors.cardNumber = 'Card number is required';
       if (!formData.cardName.trim()) newErrors.cardName = 'Cardholder name is required';
@@ -129,10 +129,10 @@ const Checkout = ({ cartItems, user, onLogin }) => {
     e.preventDefault();
     
     if (validateForm()) {
-      // Simulate order processing
-      setOrderPlaced(true);
       
-      // In a real app, you would send this data to your backend
+      setOrderPlaced(true);
+
+      
       const orderData = {
         user: user,
         items: cartItems,
@@ -149,8 +149,8 @@ const Checkout = ({ cartItems, user, onLogin }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+
     
-    // Format card number with spaces
     if (name === 'cardNumber') {
       const formattedValue = value.replace(/\s/g, '').replace(/(\d{4})/g, '$1 ').trim();
       setFormData(prev => ({
@@ -158,7 +158,7 @@ const Checkout = ({ cartItems, user, onLogin }) => {
         [name]: formattedValue
       }));
     }
-    // Format expiry date
+      
     else if (name === 'cardExpiry') {
       const formattedValue = value.replace(/\D/g, '').replace(/(\d{2})(\d)/, '$1/$2');
       setFormData(prev => ({
@@ -172,8 +172,8 @@ const Checkout = ({ cartItems, user, onLogin }) => {
         [name]: value
       }));
     }
+
     
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({
         ...prev,
@@ -210,7 +210,7 @@ const Checkout = ({ cartItems, user, onLogin }) => {
         <div className="checkout-form-section">
           <h3>Shipping Information</h3>
           <form onSubmit={handleSubmit} className="checkout-form">
-            {/* Personal information fields (same as before) */}
+            {}
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="firstName">First Name *</label>
@@ -432,7 +432,7 @@ const Checkout = ({ cartItems, user, onLogin }) => {
               </div>
             )}
 
-            {/* Net Banking Details Section - Only shown when payment method is Net Banking */}
+            {}
             {showNetBankingDetails && (
               <div className="payment-details-section">
                 <h4>Net Banking Details</h4>
@@ -459,7 +459,7 @@ const Checkout = ({ cartItems, user, onLogin }) => {
               </div>
             )}
 
-            {/* Cash on Delivery Note */}
+            {}
             {formData.paymentMethod === 'cod' && (
               <div className="payment-details-section">
                 <h4>Cash on Delivery</h4>
