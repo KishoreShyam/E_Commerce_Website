@@ -113,13 +113,10 @@ const Cart = ({ cartItems, onUpdateQuantity, onRemoveItem, user, onLogin }) => {
               <span>Total:</span>
               <span>₹{finalTotal}</span>
             </div>
-            
-            <button 
-              onClick={() => setShowPaymentModal(true)} 
-              className="checkout-btn"
-            >
-              Proceed to Checkout
-            </button>
+            <Link to="/checkout" className="checkout-btn">
+            Proceed to Checkout
+            </Link>
+
           </div>
         </div>
       )}
