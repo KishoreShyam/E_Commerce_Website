@@ -1627,7 +1627,7 @@ tr:hover {
   }
 }
 
-/* Card Details Section */
+
 .card-details-section {
   background: var(--neutral-light);
   padding: 1.5rem;
@@ -1678,7 +1678,7 @@ tr:hover {
   display: block;
 }
 
-/* Responsive adjustments for card details */
+
 @media (max-width: 768px) {
   .card-details-section {
     padding: 1rem;
@@ -1716,7 +1716,7 @@ tr:hover {
   gap: 1rem;
 }
 
-/* Payment Details Section */
+
 .payment-details-section {
   background: var(--neutral-light);
   padding: 1.5rem;
@@ -1742,7 +1742,7 @@ tr:hover {
   border-left: 4px solid #2196f3;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 768px) {
   .payment-details-section {
     padding: 1rem;
