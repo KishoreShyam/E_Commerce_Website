@@ -5,8 +5,8 @@ import ProductGrid from './ProductGrid';
 const CategoryPage = ({ products, categories, onAddToCart }) => {
   const { categoryName } = useParams();
   const categoryProducts = products.filter(p => p.category === categoryName);
+
   
-  // Category descriptions
   const categoryDescriptions = {
     "Dry Fruits": "Discover our premium selection of dry fruits, carefully sourced and packed with nutrients. From almonds to walnuts, we offer the finest quality dry fruits for your healthy lifestyle.",
     "Healthy Snacks": "Explore our range of nutritious snacks that are perfect for on-the-go energy. Our healthy snacks are made with natural ingredients and no artificial preservatives.",
