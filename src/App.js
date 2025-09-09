@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
-// Components
+
 import Header from './components/Header';
 import Hero from './components/Hero';
 import ProductGrid from './components/ProductGrid';
@@ -14,7 +14,7 @@ import Checkout from './components/Checkout';
 import LoginModal from './components/LoginModal';
 import CategoryPage from './components/CategoryPage';
 
-// Mock data
+
 const initialProducts = [
   {
     id: 1,
@@ -263,7 +263,7 @@ function App() {
   const [products, setProducts] = useState(initialProducts);
   const [filteredProducts, setFilteredProducts] = useState(initialProducts);
 
-  // Check for user cookie on component mount
+  
   useEffect(() => {
     const userCookie = document.cookie.split('; ').find(row => row.startsWith('user='));
     if (userCookie) {
@@ -272,7 +272,7 @@ function App() {
     }
   }, []);
 
-  // Filter products based on search query
+  
   useEffect(() => {
     if (searchQuery) {
       const filtered = products.filter(product => 
@@ -293,7 +293,7 @@ function App() {
       return;
     }
     
-    // Check if product is in stock
+    
     if (!product.inStock || product.stock === 0) {
       alert("Sorry, this product is out of stock!");
       return;
@@ -301,7 +301,7 @@ function App() {
     
     const existingItem = cartItems.find(item => item.id === product.id);
     if (existingItem) {
-      // Check if we have enough stock
+      
       if (existingItem.quantity + 1 > product.stock) {
         alert(`Only ${product.stock} items available in stock!`);
         return;
@@ -325,7 +325,7 @@ function App() {
       return;
     }
     
-    // Check stock availability
+    
     const product = products.find(p => p.id === productId);
     if (newQuantity > product.stock) {
       alert(`Only ${product.stock} items available in stock!`);
@@ -339,12 +339,12 @@ function App() {
 
   const loginUser = (userData) => {
     setUser(userData);
-    // Set cookie that expires in 30 days
+    
     const expires = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toUTCString();
     document.cookie = `user=${encodeURIComponent(JSON.stringify(userData))}; expires=${expires}; path=/`;
     setShowLoginModal(false);
     
-    // If user is admin, show admin panel
+    
     if (userData.email === "admin@dryfruits.com") {
       setShowAdmin(true);
     }
@@ -353,7 +353,7 @@ function App() {
   const logoutUser = () => {
     setUser(null);
     setShowAdmin(false);
-    // Clear the user cookie
+    
     document.cookie = 'user=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
   };
 
