@@ -6,7 +6,7 @@ const LoginModal = ({ onLogin, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simple validation
+    
     if (email && password) {
       onLogin({
         id: Date.now(),

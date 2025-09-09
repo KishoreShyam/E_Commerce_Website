@@ -32,7 +32,7 @@ const AdminPanel = ({ products: initialProducts, categories, onClose, onUpdatePr
     setProducts([...products, product]);
     if (onUpdateProducts) onUpdateProducts([...products, product]);
     
-    // Reset form
+    
     setNewProduct({
       name: '',
       category: 'Dry Fruits',
