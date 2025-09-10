@@ -1,113 +1,20 @@
 import React, { useState } from 'react';
 
-const AdminPanel = ({ products: initialProducts, categories, onClose, onUpdateProducts }) => {
+const AdminPanel = ({ 
+  products: initialProducts, 
+  categories, 
+  orders: initialOrders = [], 
+  customers: initialCustomers = [], 
+  onClose, 
+  onUpdateProducts,
+  onUpdateOrderStatus,
+  onUpdatePaymentStatus 
+}) => {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [products, setProducts] = useState(initialProducts);
   const [editingProduct, setEditingProduct] = useState(null);
-  const [orders, setOrders] = useState([
-    {
-      id: 'ORD001',
-      customerId: 'CUST001',
-      customerName: 'John Doe',
-      customerEmail: 'john@example.com',
-      customerPhone: '+91 9876543210',
-      items: [
-        { id: 1, name: 'Premium Almonds', quantity: 2, price: 299, image: 'https://images.pexels.com/photos/1295572/pexels-photo-1295572.jpeg' },
-        { id: 2, name: 'Cashew Nuts', quantity: 1, price: 399, image: 'https://images.pexels.com/photos/1295572/pexels-photo-1295572.jpeg' }
-      ],
-      total: 997,
-      status: 'pending',
-      paymentMethod: 'card',
-      paymentStatus: 'completed',
-      orderDate: '2024-01-15T10:30:00Z',
-      shippingAddress: {
-        address: '123 Main Street, Apartment 4B',
-        city: 'Mumbai',
-        state: 'Maharashtra',
-        zipCode: '400001'
-      },
-      trackingNumber: 'TRK123456789'
-    },
-    {
-      id: 'ORD002',
-      customerId: 'CUST002',
-      customerName: 'Jane Smith',
-      customerEmail: 'jane@example.com',
-      customerPhone: '+91 9876543211',
-      items: [
-        { id: 3, name: 'Mixed Dry Fruits', quantity: 1, price: 599, image: 'https://images.pexels.com/photos/1295572/pexels-photo-1295572.jpeg' }
-      ],
-      total: 599,
-      status: 'shipped',
-      paymentMethod: 'upi',
-      paymentStatus: 'completed',
-      orderDate: '2024-01-14T15:45:00Z',
-      shippingAddress: {
-        address: '456 Oak Avenue',
-        city: 'Delhi',
-        state: 'Delhi',
-        zipCode: '110001'
-      },
-      trackingNumber: 'TRK987654321'
-    },
-    {
-      id: 'ORD003',
-      customerId: 'CUST003',
-      customerName: 'Mike Johnson',
-      customerEmail: 'mike@example.com',
-      customerPhone: '+91 9876543212',
-      items: [
-        { id: 4, name: 'Walnuts', quantity: 3, price: 249, image: 'https://images.pexels.com/photos/1295572/pexels-photo-1295572.jpeg' }
-      ],
-      total: 747,
-      status: 'delivered',
-      paymentMethod: 'cod',
-      paymentStatus: 'pending',
-      orderDate: '2024-01-13T09:15:00Z',
-      shippingAddress: {
-        address: '789 Pine Road',
-        city: 'Bangalore',
-        state: 'Karnataka',
-        zipCode: '560001'
-      },
-      trackingNumber: 'TRK456789123'
-    }
-  ]);
-  const [customers, setCustomers] = useState([
-    {
-      id: 'CUST001',
-      name: 'John Doe',
-      email: 'john@example.com',
-      phone: '+91 9876543210',
-      joinDate: '2024-01-01T00:00:00Z',
-      totalOrders: 3,
-      totalSpent: 2547,
-      status: 'active',
-      lastOrderDate: '2024-01-15T10:30:00Z'
-    },
-    {
-      id: 'CUST002',
-      name: 'Jane Smith',
-      email: 'jane@example.com',
-      phone: '+91 9876543211',
-      joinDate: '2024-01-02T00:00:00Z',
-      totalOrders: 2,
-      totalSpent: 1198,
-      status: 'active',
-      lastOrderDate: '2024-01-14T15:45:00Z'
-    },
-    {
-      id: 'CUST003',
-      name: 'Mike Johnson',
-      email: 'mike@example.com',
-      phone: '+91 9876543212',
-      joinDate: '2024-01-03T00:00:00Z',
-      totalOrders: 1,
-      totalSpent: 747,
-      status: 'inactive',
-      lastOrderDate: '2024-01-13T09:15:00Z'
-    }
-  ]);
+  const [orders, setOrders] = useState(initialOrders);
+  const [customers, setCustomers] = useState(initialCustomers);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [selectedCustomer, setSelectedCustomer] = useState(null);
   const [newProduct, setNewProduct] = useState({
@@ -182,15 +89,23 @@ const AdminPanel = ({ products: initialProducts, categories, onClose, onUpdatePr
   };
 
   const updateOrderStatus = (orderId, newStatus) => {
-    setOrders(orders.map(order => 
+    const updatedOrders = orders.map(order => 
       order.id === orderId ? { ...order, status: newStatus } : order
-    ));
+    );
+    setOrders(updatedOrders);
+    if (onUpdateOrderStatus) {
+      onUpdateOrderStatus(orderId, newStatus);
+    }
   };
 
   const updatePaymentStatus = (orderId, newPaymentStatus) => {
-    setOrders(orders.map(order => 
+    const updatedOrders = orders.map(order => 
       order.id === orderId ? { ...order, paymentStatus: newPaymentStatus } : order
-    ));
+    );
+    setOrders(updatedOrders);
+    if (onUpdatePaymentStatus) {
+      onUpdatePaymentStatus(orderId, newPaymentStatus);
+    }
   };
 
   const getStatusColor = (status) => {

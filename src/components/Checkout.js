@@ -129,10 +129,6 @@ const Checkout = ({ cartItems, user, onLogin }) => {
     e.preventDefault();
     
     if (validateForm()) {
-      
-      setOrderPlaced(true);
-      
-      
       const orderData = {
         user: user,
         items: cartItems,
@@ -143,7 +139,12 @@ const Checkout = ({ cartItems, user, onLogin }) => {
         orderId: `ORD${Date.now()}`
       };
       
-      console.log('Order placed:', orderData);
+      // Call the parent function to handle order placement
+      if (onOrderPlaced) {
+        onOrderPlaced(orderData);
+      }
+      
+      setOrderPlaced(true);
     }
   };
 
