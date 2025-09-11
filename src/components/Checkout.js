@@ -156,6 +156,7 @@ const Checkout = ({ cartItems, user, onLogin, onOrderPlaced }) => {
                   className={errors.firstName ? 'error' : ''}
                 />
                 {errors.firstName && <span className="error-text">{errors.firstName}</span>}
+                }
               </div>
               <div className="form-group">
                 <label htmlFor="lastName">Last Name *</label>
@@ -168,6 +169,7 @@ const Checkout = ({ cartItems, user, onLogin, onOrderPlaced }) => {
                   className={errors.lastName ? 'error' : ''}
                 />
                 {errors.lastName && <span className="error-text">{errors.lastName}</span>}
+                }
               </div>
             </div>
             
@@ -183,6 +185,7 @@ const Checkout = ({ cartItems, user, onLogin, onOrderPlaced }) => {
                   className={errors.email ? 'error' : ''}
                 />
                 {errors.email && <span className="error-text">{errors.email}</span>}
+                }
               </div>
               <div className="form-group">
                 <label htmlFor="phone">Phone Number *</label>
@@ -196,6 +199,7 @@ const Checkout = ({ cartItems, user, onLogin, onOrderPlaced }) => {
                   className={errors.phone ? 'error' : ''}
                 />
                 {errors.phone && <span className="error-text">{errors.phone}</span>}
+                }
               </div>
             </div>
             
@@ -211,6 +215,7 @@ const Checkout = ({ cartItems, user, onLogin, onOrderPlaced }) => {
                 className={errors.address ? 'error' : ''}
               />
               {errors.address && <span className="error-text">{errors.address}</span>}
+              }
             </div>
             
             <div className="form-row">
@@ -225,6 +230,7 @@ const Checkout = ({ cartItems, user, onLogin, onOrderPlaced }) => {
                   className={errors.city ? 'error' : ''}
                 />
                 {errors.city && <span className="error-text">{errors.city}</span>}
+                }
               </div>
               <div className="form-group">
                 <label htmlFor="state">State *</label>
@@ -237,6 +243,7 @@ const Checkout = ({ cartItems, user, onLogin, onOrderPlaced }) => {
                   className={errors.state ? 'error' : ''}
                 />
                 {errors.state && <span className="error-text">{errors.state}</span>}
+                }
               </div>
             </div>
             
@@ -252,6 +259,7 @@ const Checkout = ({ cartItems, user, onLogin, onOrderPlaced }) => {
                 className={errors.zipCode ? 'error' : ''}
               />
               {errors.zipCode && <span className="error-text">{errors.zipCode}</span>}
+              }
             </div>
             
             <div className="payment-details-section">
