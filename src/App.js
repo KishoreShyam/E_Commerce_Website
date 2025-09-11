@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import './App.css';
 
 import Header from './components/Header';
@@ -14,6 +14,7 @@ import LoginModal from './components/LoginModal';
 import AdminPanel from './components/AdminPanel';
 
 function App() {
+  const navigate = useNavigate();
   const [products, setProducts] = useState([
     {
       id: 1,
@@ -410,7 +411,7 @@ function App() {
                 categories={categories}
                 orders={orders}
                 customers={customers}
-                onClose={() => setShowAdmin(false)}
+                onClose={() => navigate('/')}
                 onUpdateProducts={handleUpdateProducts}
                 onUpdateOrderStatus={handleUpdateOrderStatus}
                 onUpdatePaymentStatus={handleUpdatePaymentStatus}
